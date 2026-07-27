@@ -1,22 +1,93 @@
 aid: giveffect
 name: Giveffect
-description: Giveffect is a company surfaced as a portfolio company of y-combinator and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Giveffect is an all-in-one nonprofit management platform that combines ten
+  seamlessly connected systems into a single suite for charitable
+  organizations: constituent relationship management (CRM), online fundraising
+  and donation processing, peer-to-peer and event fundraising, volunteer
+  management, membership management, email and marketing communications, wealth
+  screening and major-gifts tools, website building, and smart automation and
+  workflows. Giveffect exposes an optional "open API" on its enterprise
+  (Ultimate+) tier for integrating the platform's donor, donation, volunteer,
+  and campaign data with external systems, and ships prebuilt integrations with
+  QuickBooks Online, DonorSearch, Double the Donation, Zoom, The Giving Block,
+  and Ez Scan. The company was surfaced as a Y Combinator portfolio company and
+  enriched into the API Evangelist network.
 url: https://raw.githubusercontent.com/api-evangelist/giveffect/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://www.giveffect.com/assets/og_gesplash.jpg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - y-combinator
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: enriched-identity-gated-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
-apis: []
+- Nonprofit
+- Fundraising
+- CRM
+- Donations
+- Volunteer Management
+- Marketing Automation
+- SaaS
+apis:
+- name: Giveffect API
+  description: >-
+    Giveffect's "open API" is available on the enterprise Ultimate+ plan and
+    provides programmatic access to platform data (donors, donations,
+    volunteers, campaigns, and events). Public developer documentation and an
+    OpenAPI specification are not published; access is provisioned to enterprise
+    customers. The base host responds with an operational status endpoint.
+  humanURL: https://www.giveffect.com/pricing
+  baseURL: https://api.giveffect.com
+  tags:
+  - Nonprofit
+  - Fundraising
+  - CRM
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DomainSecurity
+  url: security/giveffect-domain-security.yml
+- type: LLMsTxt
+  url: llms/giveffect-llms.txt
+- type: Website
+  url: https://www.giveffect.com
+- type: Pricing
+  url: https://www.giveffect.com/pricing
+- type: SignUp
+  url: https://app.giveffect.com
+- type: Login
+  url: https://app.giveffect.com
+- type: Support
+  url: https://www.giveffect.com/schedule-a-call
+- type: TermsOfService
+  url: https://www.giveffect.com/terms-of-use-agreement
+- type: PrivacyPolicy
+  url: https://www.giveffect.com/privacy-policy
+- type: Security
+  url: https://www.giveffect.com/security
+- type: Compliance
+  url: https://www.giveffect.com/security
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

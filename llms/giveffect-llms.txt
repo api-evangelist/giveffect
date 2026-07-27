@@ -1,0 +1,26 @@
+# Giveffect
+
+> Giveffect is an all-in-one nonprofit management platform combining ten connected systems — CRM, online fundraising and donation processing, peer-to-peer and event fundraising, volunteer management, membership management, marketing communications, wealth screening and major-gifts tools, website building, and automation. An optional "open API" is available on the enterprise (Ultimate+) tier for integrating platform data with external systems. Public API documentation and an OpenAPI specification are not published; API access is provisioned to enterprise customers.
+
+## APIs
+
+- [Giveffect API (enterprise / Ultimate+)](https://www.giveffect.com/pricing): Programmatic access to donors, donations, volunteers, campaigns, and events. Base host: https://api.giveffect.com
+
+## Company
+
+- [Website](https://www.giveffect.com)
+- [Pricing](https://www.giveffect.com/pricing)
+- [Sign up / Login](https://app.giveffect.com)
+- [Support](https://www.giveffect.com/schedule-a-call)
+- [Security](https://www.giveffect.com/security): PCI Level 1 compliant, SSAE16 certified data centers, 256-bit SSL / AES-256 at rest, FDIC/CDIC-insured payment partners.
+- [Terms of Use](https://www.giveffect.com/terms-of-use-agreement)
+- [Privacy Policy](https://www.giveffect.com/privacy-policy)
+
+## Integrations
+
+- QuickBooks Online (financial management)
+- DonorSearch (wealth screening)
+- Double the Donation (matching gifts)
+- Zoom (virtual events)
+- The Giving Block (crypto and stock donations)
+- Ez Scan (check scanning and eDeposits)
