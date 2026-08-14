@@ -15,16 +15,25 @@ description: >-
   enriched into the API Evangelist network.
 url: https://raw.githubusercontent.com/api-evangelist/giveffect/refs/heads/main/apis.yml
 accessModel:
-  pricing: unknown
-  onboarding: unknown
-  trial: false
+  pricing: enterprise
+  onboarding: sales
+  trial: true
   try_now: false
   public: false
-  label: Unknown
-  confidence: low
-  source: []
-  generated: '2026-07-22'
-  method: derived
+  label: Enterprise (free trial) · Requires approval
+  confidence: high
+  source:
+  - https://www.giveffect.com/pricing
+  - https://www.giveffect.com/faq
+  note: >-
+    Three named tiers (Lite, Ultimate, Ultimate+), none with a published price —
+    every tier reads "Contact us" and routes to Schedule a Call. The API itself
+    is available only on Ultimate+ ("Open API and custom integration"); the
+    Ultimate tier is explicitly "All system features (excludes open API)". A
+    14-day platform free trial is offered after a demo, but it does not include
+    API access.
+  generated: '2026-08-13'
+  method: searched
 image: https://www.giveffect.com/assets/og_gesplash.jpg
 x-type: company
 x-source: vc-portfolio
@@ -34,7 +43,7 @@ x-tier: profile
 x-tier-reason: enriched-identity-gated-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-19'
+modified: '2026-08-13'
 tags:
 - Company
 - Nonprofit
@@ -49,9 +58,18 @@ apis:
   description: >-
     Giveffect's "open API" is available on the enterprise Ultimate+ plan and
     provides programmatic access to platform data (donors, donations,
-    volunteers, campaigns, and events). Public developer documentation and an
-    OpenAPI specification are not published; access is provisioned to enterprise
-    customers. The base host responds with an operational status endpoint.
+    volunteers, campaigns, and events). It is explicitly carved out of the tier
+    below it — the Ultimate pricing card reads "All system features (excludes
+    open API)" — and only Ultimate+ lists "Open API and custom integration", so
+    entitlement is a plan feature granted through sales rather than a self-serve
+    signup. No public developer documentation, OpenAPI specification, SDK, or
+    Postman collection is published anywhere; https://www.giveffect.com/api 302s
+    to the customer sign-in page. The base host is live and JSON-native: its root
+    is an operational health endpoint returning
+    {"status":{"code":200,"message":"OK - Systems operational"}}, unknown paths
+    return {"error":{"code":404,"message":"Not Found - Invalid resource"}}, and
+    every response carries an X-Request-Id correlation uuid (Rails behind Phusion
+    Passenger). Probed 2026-08-13.
   humanURL: https://www.giveffect.com/pricing
   baseURL: https://api.giveffect.com
   tags:
@@ -66,8 +84,26 @@ maintainers:
 common:
 - type: DomainSecurity
   url: security/giveffect-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/giveffect-vulnerability-disclosure.yml
 - type: LLMsTxt
   url: llms/giveffect-llms.txt
+- type: Plans
+  url: plans/giveffect-plans-pricing.yml
+- type: ChangeLog
+  url: changelog/giveffect-changelog.yml
+- type: Conventions
+  url: conventions/giveffect-conventions.yml
+- type: Conformance
+  url: conformance/giveffect-conformance.yml
+- type: Lifecycle
+  url: lifecycle/giveffect-lifecycle.yml
+- type: Blog
+  url: https://www.giveffect.com/nonprofit-resource-center
+- type: BlogRSS
+  url: https://www.giveffect.com/nonprofit-resource-center/feed/
+- type: FAQ
+  url: https://www.giveffect.com/faq
 - type: Website
   url: https://www.giveffect.com
 - type: Pricing
@@ -82,12 +118,35 @@ common:
   url: https://www.giveffect.com/terms-of-use-agreement
 - type: PrivacyPolicy
   url: https://www.giveffect.com/privacy-policy
-- type: Security
-  url: https://www.giveffect.com/security
 - type: Compliance
   url: https://www.giveffect.com/security
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: minimal
+  artifacts_added: 12
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence
+  note: >-
+    Contract discovery (STEP 0b) missed on every host; the API is a tier-gated
+    enterprise feature with no public reference. Removed a prior-round `Security`
+    pointer that credited security_disclosure to a marketing page with no
+    disclosure mechanism (see security/giveffect-vulnerability-disclosure.yml).
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    Giveffect's API is a paid feature of the Ultimate+ tier only — the Ultimate
+    pricing card reads "All system features (excludes open API)" — and
+    https://www.giveffect.com/api 302s to the customer sign-in page, so the
+    reference requires an active subscription; api.giveffect.com is live and
+    answers JSON but returns its 404 envelope for /openapi.json, /swagger.json,
+    /api-docs, /graphql, /mcp and every /.well-known/ path.
+  evidence:
+  - url: https://www.giveffect.com/api
+    status: 302
+  - url: https://api.giveffect.com/openapi.json
+    status: 404
+  - url: https://api.giveffect.com/
+    status: 200
+  - url: https://www.giveffect.com/pricing
+    status: 200
+  checked: '2026-08-13'
