@@ -1,0 +1,68 @@
+generated: '2026-08-13'
+method: probed
+source: live unauthenticated HTTP probes of https://api.giveffect.com
+name: Giveffect API error envelope
+description: >-
+  Giveffect publishes no error reference, no error-code registry and no
+  documentation of failure semantics. This file is NOT a published catalog — it
+  records the single error shape that could be observed live from the production
+  API host without credentials, so that the envelope is at least on record.
+  Because the provider publishes nothing, NO ErrorCatalog pointer is emitted
+  from this file; crediting Giveffect with error semantics on the strength of one
+  probed 404 would be false credit.
+published_catalog: false
+format: vendor
+rfc9457: false
+content_type: application/json; charset=utf-8
+envelope:
+  shape: '{"error": {"code": <int>, "message": "<string>"}}'
+  fields:
+  - name: error.code
+    type: integer
+    note: duplicates the HTTP status code
+  - name: error.message
+    type: string
+    note: single human-readable string, hyphen-separated status and reason
+  type_field: null
+  detail_field: null
+  instance_field: null
+  documentation_link: null
+correlation:
+  header: X-Request-Id
+  present_on_errors: true
+  note: a uuid is returned on error responses and is the only support handle
+problem_types:
+- status: 404
+  code: 404
+  title: Not Found - Invalid resource
+  observed_body: '{"error":{"code":404,"message":"Not Found - Invalid resource"}}'
+  observed_at:
+  - https://api.giveffect.com/v1/donors
+  - https://api.giveffect.com/openapi.json
+  - https://api.giveffect.com/.well-known/security.txt
+  remediation: null
+  documented_by_provider: false
+observed_success_envelope:
+  status: 200
+  shape: '{"status": {"code": 200, "message": "OK - Systems operational"}}'
+  observed_at: https://api.giveffect.com/
+  note: >-
+    The API root is a health/status endpoint. It returns 200 for GET and POST
+    alike, so it is not a resource endpoint.
+not_observed:
+- >-
+  No 401/403 could be provoked: unknown and unauthorized paths alike return 404,
+  so the host does not distinguish "not found" from "not permitted" to an
+  anonymous caller.
+- No 429, no 5xx, no validation-error shape.
+gaps:
+- No published error reference or code registry.
+- No machine-actionable error type URI; error.code only mirrors the HTTP status.
+- No field-level validation detail, no remediation guidance, no docs link.
+x-evidence:
+- url: https://api.giveffect.com/v1/donors
+  http_status: 404
+  fetched: '2026-08-13'
+- url: https://api.giveffect.com/
+  http_status: 200
+  fetched: '2026-08-13'

@@ -1,0 +1,65 @@
+generated: '2026-08-13'
+method: searched
+source: giveffect.com + api.giveffect.com probes
+name: Giveffect API authentication
+description: >-
+  Giveffect does not publish how its API is authenticated. There is no developer
+  portal, no auth page, no OAuth or OIDC discovery document, and no OpenAPI with
+  securitySchemes to derive from. Probing the production API host anonymously
+  does not reveal the scheme either: unknown paths return 404 rather than a 401
+  with a WWW-Authenticate challenge, so the service does not advertise its
+  challenge to an unauthenticated caller. NO Authentication pointer is emitted
+  from this file — it records that the auth model is undocumented, which is the
+  opposite of authentication_documented.
+documented: false
+schemes: []
+scheme_count: 0
+discovery:
+- url: https://api.giveffect.com/.well-known/openid-configuration
+  status: 404
+- url: https://api.giveffect.com/.well-known/oauth-authorization-server
+  status: 404
+- url: https://api.giveffect.com/.well-known/oauth-protected-resource
+  status: 404
+- url: https://www.giveffect.com/.well-known/openid-configuration
+  status: 404
+- url: https://www.giveffect.com/.well-known/oauth-authorization-server
+  status: 404
+challenge_observed:
+  www_authenticate: false
+  status_on_unknown_path: 404
+  note: >-
+    GET https://api.giveffect.com/v1/donors returns
+    {"error":{"code":404,"message":"Not Found - Invalid resource"}} with no
+    WWW-Authenticate header. A 401 could not be provoked anonymously.
+provisioning:
+  model: enterprise-provisioned
+  tier: Ultimate+
+  evidence: >-
+    "Open API and custom integration" is listed only on the Ultimate+ pricing
+    card; the Ultimate card reads "All system features (excludes open API)".
+    Access is therefore granted by Giveffect sales/success, not self-serve.
+  source: https://www.giveffect.com/pricing
+  self_serve_key_issuance: false
+platform_auth:
+  note: >-
+    Platform (not API) authentication is a username/password login at
+    https://app.giveffect.com, and two-factor authentication was shipped to the
+    product as a 2025 update. This says nothing about how API callers
+    authenticate.
+  source: https://www.giveffect.com/nonprofit-resource-center/giveffect-2025-new-features/
+scopes:
+  applicable: false
+  note: >-
+    No OAuth surface exists, so scopes/ is skipped rather than written empty.
+x-evidence:
+- url: https://api.giveffect.com/v1/donors
+  http_status: 404
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/pricing
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/api
+  http_status: 302
+  redirect_to: https://www.giveffect.com/signin
+  fetched: '2026-08-13'

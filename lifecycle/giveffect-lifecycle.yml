@@ -1,0 +1,97 @@
+generated: '2026-08-13'
+method: searched
+source: giveffect.com + api.giveffect.com probes
+name: Giveffect API lifecycle
+description: >-
+  Giveffect publishes no API versioning policy, no deprecation policy, no sunset
+  commitments, no SLA and no status page. What exists is a machine-readable
+  health endpoint on the API host and a second one on the marketing host — both
+  return a bare JSON status object with no incident history, no component
+  breakdown and no subscribe option, so neither is a status page. No StatusPage
+  and no Deprecation pointer is emitted from this file.
+versioning:
+  policy_published: false
+  scheme: null
+  current_version: null
+  in_url: unknown
+  note: >-
+    /v1 and /v1/<resource> on api.giveffect.com return the same generic 404
+    envelope as any unknown path, so a version prefix is neither confirmed nor
+    denied by the public surface.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  advance_notice: null
+  deprecated_operations: []
+  note: >-
+    No Deprecation or Sunset response header observed on any probed path; no
+    deprecation policy page exists on the site or in the sitemap.
+sla:
+  published: false
+  uptime_target: null
+  note: >-
+    The Ultimate+ tier promises "unlimited screen share/phone support" and a
+    dedicated success manager, but no uptime or response-time commitment is
+    published.
+status_page:
+  exists: false
+  url: null
+  probes:
+  - url: https://status.giveffect.com/
+    status: 200
+    verdict: soft-404
+    note: >-
+      Returns HTTP 200 but renders Giveffect's "Whoops! Error 404" page. Not a
+      status page. Recorded explicitly so a later pass does not credit the 200.
+  - url: https://www.giveffect.com/status
+    status: 200
+    body: '{"status":200}'
+    verdict: health-endpoint
+    note: >-
+      A bare health probe, and it is Disallowed in robots.txt. No incidents, no
+      components, no history, no subscription.
+  - url: https://api.giveffect.com/
+    status: 200
+    body: '{"status":{"code":200,"message":"OK - Systems operational"}}'
+    verdict: health-endpoint
+    note: >-
+      The API root doubles as a health endpoint. This is the closest thing
+      Giveffect has to an operational signal, and it is a single boolean.
+support:
+  channels:
+  - name: Schedule a Call
+    url: https://www.giveffect.com/schedule-a-call
+    status: 200
+  - name: Support portal
+    url: https://support.giveffect.com/
+    status: 403
+    note: >-
+      Cloudflare interstitial ("Just a moment...") on an automated request; a
+      human browser is likely served content. Not machine-readable.
+  - name: Chat and email support
+    note: listed as an included feature on every published plan tier
+changelog:
+  api_changelog: false
+  product_updates: https://www.giveffect.com/nonprofit-resource-center/tag/product-updates/
+  see: changelog/giveffect-changelog.yml
+retirement:
+  announced: false
+  note: >-
+    Giveffect is an operating company. Its resource center published new posts as
+    recently as 2026-08-13 and a new Dialpad integration in May 2026, so the
+    platform is actively maintained.
+x-evidence:
+- url: https://status.giveffect.com/
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/status
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://api.giveffect.com/
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://support.giveffect.com/
+  http_status: 403
+  fetched: '2026-08-13'

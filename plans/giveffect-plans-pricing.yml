@@ -1,0 +1,109 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.giveffect.com/pricing
+name: Giveffect plans and pricing
+description: >-
+  Giveffect publishes three named subscription tiers on its public pricing page
+  — Lite, Ultimate and Ultimate+ — sized by database records and seats. No tier
+  carries a published price: every tier reads "Contact us" and routes to a
+  "Schedule a Call" or "Try Now" call to action, so the money figures are
+  sales-gated. The API is a tier-gated feature, not a separate product: the
+  Ultimate tier is explicitly listed as "All system features (excludes open
+  API)" and only Ultimate+ lists "Open API and custom integration". A row
+  labelled "Open API" also appears in the plan comparison matrix on the same
+  page.
+plan_count: 3
+currency: USD
+billing_period: unknown
+pricing_published: false
+pricing_model: contact-sales
+plans:
+- name: Lite
+  price: null
+  price_display: Contact us
+  currency: USD
+  billing_period: unknown
+  audience: growing nonprofit teams
+  limits:
+    database_records: 10,000 - 30,000
+    users: up to 10
+    workflows: up to 5
+  included:
+  - Dedicated success manager
+  - Live, customized team training
+  - Bi-annual check-ins
+  - Complimentary chat and email support
+  api_access: false
+  api_note: >-
+    The Lite card does not list the open API among its included features.
+  cta: Schedule a Call
+  cta_url: https://www.giveffect.com/schedule-a-call
+- name: Ultimate
+  price: null
+  price_display: Contact us
+  currency: USD
+  billing_period: unknown
+  audience: large nonprofit teams
+  limits:
+    database_records: 30,000 - 100,000
+    users: up to 20
+    workflows: unlimited
+  included:
+  - Dedicated success manager
+  - Live, customized team training
+  - Bi-annual check-ins
+  - Complimentary chat and email support
+  - All system features (excludes open API)
+  api_access: false
+  api_note: >-
+    Published verbatim on the pricing card as "All system features (excludes
+    open API)" — the API is explicitly carved out of this tier.
+  cta: Schedule a Call
+  cta_url: https://www.giveffect.com/schedule-a-call
+- name: Ultimate+
+  price: null
+  price_display: Contact us
+  currency: USD
+  billing_period: unknown
+  audience: enterprise nonprofit teams
+  limits:
+    database_records: 100,000 - millions
+    users: unlimited
+    workflows: unlimited
+  included:
+  - Unlimited screen share / phone support
+  - Dedicated success manager
+  - Quarterly check-ins
+  - In-person onboarding (if applicable)
+  - Live, customized team training
+  - Complimentary data migration
+  - Priority feature requests
+  - Open API and custom integration
+  api_access: true
+  api_note: >-
+    Only tier that lists "Open API and custom integration". This is the single
+    published statement of how a Giveffect customer obtains API access.
+  cta: Schedule a Call
+  cta_url: https://www.giveffect.com/schedule-a-call
+trial:
+  available: true
+  length_days: 14
+  note: >-
+    The FAQ states a 14-day free trial is offered after the 30-minute demo, and
+    the pricing comparison table carries "Try Now" buttons linking to /trial.
+  source: https://www.giveffect.com/faq
+overage: null
+notes:
+- >-
+  Serving scope is published as 501(c)(3) nonprofits in the United States and
+  CRA-approved nonprofits in Canada (source: /faq).
+- >-
+  No per-call, per-seat or per-record API metering is published anywhere on the
+  public site; API entitlement is a plan feature flag, not a metered product.
+x-evidence:
+- url: https://www.giveffect.com/pricing
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/faq
+  http_status: 200
+  fetched: '2026-08-13'

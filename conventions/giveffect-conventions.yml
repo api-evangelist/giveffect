@@ -1,0 +1,137 @@
+generated: '2026-08-13'
+method: probed
+source: live unauthenticated HTTP probes of https://api.giveffect.com
+name: Giveffect API conventions
+description: >-
+  Giveffect publishes no API reference, so none of the usual cross-cutting
+  semantics (auth style, pagination, idempotency, versioning, error envelope,
+  rate-limit signalling) are documented. What IS knowable was established by
+  probing the production API host unauthenticated: api.giveffect.com is a live
+  Rails/Phusion Passenger service that answers JSON on every path, wraps both
+  success and failure in a consistent two-level envelope, and returns a
+  per-request correlation id. Everything below is either an observed fact with
+  the probe that produced it, or an explicit "not published". Nothing is
+  inferred from a competitor or a template.
+host: https://api.giveffect.com
+stack:
+  server: Apache/2.2.34 (Amazon)
+  runtime: Phusion Passenger 5.0.30
+  framework: Ruby on Rails (inferred from X-Runtime + Passenger + envelope shape)
+  observed: '2026-08-13'
+auth:
+  style: not-published
+  observed: >-
+    No WWW-Authenticate challenge is returned on any probed path; unknown paths
+    return 404 rather than 401, so the host does not advertise its auth scheme to
+    an unauthenticated caller.
+  provisioning: >-
+    API access is provisioned per customer on the Ultimate+ enterprise plan
+    (source: https://www.giveffect.com/pricing).
+content_negotiation:
+  request: application/json accepted on GET and POST
+  response: application/json; charset=utf-8 on every probed path
+  html_fallback: >-
+    Only OPTIONS / returned text/html (with a 404 and Content-Length: 0);
+    every other probed method/path returned JSON.
+envelope:
+  success:
+    shape: '{"status": {"code": <int>, "message": "<string>"}}'
+    example_observed: '{"status":{"code":200,"message":"OK - Systems operational"}}'
+    observed_at: GET https://api.giveffect.com/
+  error:
+    shape: '{"error": {"code": <int>, "message": "<string>"}}'
+    example_observed: '{"error":{"code":404,"message":"Not Found - Invalid resource"}}'
+    observed_at: GET https://api.giveffect.com/v1/donors
+    format: vendor
+    rfc9457: false
+    note: >-
+      Not application/problem+json. The HTTP status is duplicated inside the body
+      as error.code, and message is a single human string — there is no
+      machine-actionable error type, no field-level detail, no documentation
+      link.
+tracing:
+  request_id_header: X-Request-Id
+  present: true
+  format: uuid v4
+  example_observed: 6ec596ab-5a88-49f3-9037-7a923d43fda8
+  echoed_on_errors: true
+  note: >-
+    Returned on every probed response including 404s. This is the one runtime
+    signal an integrator can quote back to support.
+timing:
+  header: X-Runtime
+  present: true
+  note: server processing seconds, e.g. 0.001910
+caching:
+  etag: true
+  cache_control_success: max-age=0, private, must-revalidate
+  cache_control_error: no-cache
+security_headers:
+  x_content_type_options: nosniff
+  x_frame_options: SAMEORIGIN
+  x_xss_protection: 1; mode=block
+  strict_transport_security: false
+  note: >-
+    HSTS is served on www.giveffect.com (max-age 315360000) but NOT on
+    api.giveffect.com — see security/giveffect-domain-security.yml.
+idempotency:
+  supported: unknown
+  header: null
+  documented: false
+  note: >-
+    No idempotency header is documented and none could be observed without
+    credentials. NO Idempotency pointer is emitted for this provider.
+pagination:
+  style: not-published
+  params: []
+  response_fields: []
+versioning:
+  style: not-published
+  observed: >-
+    /v1 and /v1/<resource> return the same 404 envelope as any other unknown
+    path, so a version prefix is neither confirmed nor denied by the public
+    surface.
+  in_header: false
+  in_url: unknown
+rate_limit_signalling:
+  headers: []
+  note: none observed — see rate-limits/giveffect-rate-limits.yml
+cors:
+  preflight: >-
+    OPTIONS / returned 404 with no Access-Control-* headers, so browser-side
+    cross-origin calls are not advertised.
+adjacent_surfaces:
+- name: Nonprofit Resource Center (WordPress REST API)
+  url: https://www.giveffect.com/nonprofit-resource-center/wp-json/
+  status: 200
+  namespaces: 25
+  routes: 408
+  what_it_is: >-
+    Stock WordPress core REST API (wp/v2 plus plugin namespaces) serving
+    Giveffect's marketing resource center; the discovery document self-identifies
+    as "Giveffect Non-Profit Resource Center" with home https://wordpress.giveffect.com.
+  why_not_registered: >-
+    It is real, public and machine-readable, and it is on a host Giveffect
+    controls — but it is WordPress's content API, not a Giveffect product API.
+    Registering it as a Giveffect API entry would credit the company with an API
+    it did not build. Recorded here as a discovery finding only; it is used in
+    changelog/ to read the product-updates stream as JSON.
+cross_reference:
+  errors: errors/giveffect-problem-types.yml
+  lifecycle: lifecycle/giveffect-lifecycle.yml
+  authentication: authentication/giveffect-authentication.yml
+  rate_limits: rate-limits/giveffect-rate-limits.yml
+  security: security/giveffect-domain-security.yml
+x-evidence:
+- url: https://api.giveffect.com/
+  http_status: 200
+  content_type: application/json; charset=utf-8
+  fetched: '2026-08-13'
+- url: https://api.giveffect.com/v1/donors
+  http_status: 404
+  content_type: application/json; charset=utf-8
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/nonprofit-resource-center/wp-json/
+  http_status: 200
+  content_type: application/json; charset=UTF-8
+  fetched: '2026-08-13'

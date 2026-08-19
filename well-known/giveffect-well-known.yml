@@ -1,0 +1,98 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every Giveffect host
+name: Giveffect .well-known probe
+description: >-
+  Every RFC 8615 well-known path was probed on all three Giveffect hosts. Nothing
+  is served. www.giveffect.com and app.giveffect.com answer /.well-known/* with
+  the site's own HTML error page — some paths render a 404 page, several render a
+  500 page — so no 200 was returned and no document exists. api.giveffect.com
+  answers every well-known path with its JSON 404 envelope. NO WellKnown or
+  SecurityTxt pointer is emitted from this file: it records an absence, not a
+  presence.
+hit_count: 0
+hosts:
+- host: www.giveffect.com
+  paths:
+  - path: /.well-known/security.txt
+    status: 500
+    file: null
+    document: false
+    note: HTML error page, not a document
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/ai-plugin.json
+    status: 500
+    file: null
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 500
+    file: null
+    document: false
+  - path: /.well-known/agent.json
+    status: 500
+    file: null
+    document: false
+- host: api.giveffect.com
+  paths:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/openid-configuration
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/api-catalog
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/agent-card.json
+    status: 404
+    file: null
+    document: false
+  - path: /.well-known/agent.json
+    status: 404
+    file: null
+    document: false
+- host: app.giveffect.com
+  paths:
+  - path: /.well-known/agent-card.json
+    status: 500
+    file: null
+    document: false
+    note: HTML error page
+also_probed:
+- url: https://www.giveffect.com/llms.txt
+  status: 404
+  note: HTML 404 page; Giveffect publishes no llms.txt
+- url: https://www.giveffect.com/robots.txt
+  status: 200
+  note: >-
+    Real robots.txt. Disallows /terms/, /privacy/, /users/*, /payment*,
+    /checkout*, /status, /charities*, /campaigns*, /teams*, /participants* and
+    ?supporter_page=*. Declares sitemap https://www.giveffect.com/sitemap.xml.
+    No AI/agent-specific user-agent rules.
+- url: https://www.giveffect.com/sitemap.xml
+  status: 200
+  note: >-
+    41 URLs, none of them developer, API, or documentation pages.
+checked: '2026-08-13'

@@ -1,0 +1,126 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.giveffect.com/security
+name: Giveffect conformance and compliance claims
+description: >-
+  Giveffect publishes a single public security page. It makes compliance claims
+  about payments and hosting, and it is careful about attribution — the PCI DSS
+  Level 1 claim is made for its payment gateway PARTNERS (PayPal, Stripe), not
+  for Giveffect as a service provider. There is no trust center, no SOC 2 report,
+  no ISO 27001 certificate, no HIPAA or FedRAMP claim, and no compliance
+  documentation portal. On the API side nothing conforms to anything: there is no
+  OpenAPI, no OAuth 2.0 or OIDC metadata, no RFC 9457 problem details, no
+  RFC 8594 deprecation signalling, no standard rate-limit headers.
+standards:
+- id: pci-dss
+  name: PCI DSS Level 1
+  conforms: partial
+  evidence: >-
+    "Our payment gateway partners ('PayPal', 'Stripe') are certified Level 1 PCI
+    Compliant Service Provider (the highest level), which requires an annual
+    independent security audit of our processes and systems." Giveffect describes
+    its own donations/payments as processed "at the highest security standard -
+    PCI Level 1 Compliance". The certification named belongs to the partners.
+  source: https://www.giveffect.com/security
+  attested_by: payment partners (PayPal, Stripe)
+  certificate_published: false
+- id: ssae16
+  name: SSAE 16 (data centers)
+  conforms: partial
+  evidence: >-
+    "private information ... will not be stored on our servers but on certified
+    data centers with SSAE16 certifications, 24x7 monitoring."
+  source: https://www.giveffect.com/security
+  attested_by: hosting provider
+  certificate_published: false
+  note: SSAE 16 was superseded by SSAE 18 in 2017; the page has not been updated.
+- id: tls
+  name: TLS in transit
+  conforms: true
+  evidence: >-
+    "HTTPS with RSA 2048 bit key and SHA 256 certificate"; "256-bit SSL
+    encryption" from login to logout. Independently probed: TLSv1.2 on
+    www.giveffect.com and api.giveffect.com.
+  source: https://www.giveffect.com/security
+- id: encryption-at-rest
+  name: AES-256 at rest
+  conforms: true
+  evidence: >-
+    "AES 256 encryption with unique per-row keys" in the databases.
+  source: https://www.giveffect.com/security
+- id: fdic-cdic
+  name: FDIC / CDIC insured settlement
+  conforms: true
+  evidence: >-
+    "Our Payment Partner ('Stripe') ensures that your money is held in a
+    protected account by our FDIC-insured or CDIC-insured partner bank."
+  source: https://www.giveffect.com/security
+- id: two-factor-auth
+  name: Two-factor authentication (platform)
+  conforms: true
+  evidence: >-
+    Shipped as a 2025 product update — item 2 of "Top 10 Giveffect Product
+    Updates That Transformed Nonprofit Operations in 2025".
+  source: https://www.giveffect.com/nonprofit-resource-center/giveffect-2025-new-features/
+- id: soc2
+  name: SOC 2
+  conforms: false
+  evidence: Not claimed anywhere on the public site.
+- id: iso27001
+  name: ISO/IEC 27001
+  conforms: false
+  evidence: Not claimed anywhere on the public site.
+- id: hipaa
+  name: HIPAA
+  conforms: false
+  evidence: Not claimed. Giveffect serves nonprofits, not covered entities.
+- id: gdpr
+  name: GDPR
+  conforms: false
+  evidence: >-
+    Not claimed. Giveffect states it serves only 501(c)(3) nonprofits in the
+    United States and CRA-approved nonprofits in Canada.
+  source: https://www.giveffect.com/faq
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: >-
+    No /.well-known/oauth-authorization-server (404 on every host), no documented
+    OAuth flow, no scope reference.
+- id: oidc
+  name: OpenID Connect
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on every host.
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: >-
+    Error bodies are a vendor envelope {"error":{"code","message"}} served as
+    application/json, not application/problem+json.
+- id: rfc8594
+  name: RFC 8594 Sunset / Deprecation headers
+  conforms: false
+  evidence: No Sunset or Deprecation header observed; no deprecation policy published.
+- id: rfc9116
+  name: RFC 9116 security.txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 500 (HTML) on www and 404 on the API host.
+- id: openapi
+  name: OpenAPI
+  conforms: false
+  evidence: >-
+    No OpenAPI/Swagger document at any probed location on any Giveffect host.
+- id: rate-limit-headers
+  name: RateLimit header fields
+  conforms: false
+  evidence: No X-RateLimit-* or RateLimit-* headers on live responses.
+x-evidence:
+- url: https://www.giveffect.com/security
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/faq
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/.well-known/security.txt
+  http_status: 500
+  fetched: '2026-08-13'

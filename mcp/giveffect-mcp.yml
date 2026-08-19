@@ -1,0 +1,39 @@
+generated: '2026-08-13'
+method: searched
+source: giveffect.com + api.giveffect.com probes + web search
+name: Giveffect MCP server
+description: >-
+  Giveffect ships no Model Context Protocol server — hosted or local. No hosted
+  endpoint was found on any Giveffect host, no npm/PyPI package exists to run one
+  locally, and nothing in the provider's public material mentions MCP. No
+  candidate tool list could be derived either, because Giveffect publishes no
+  OpenAPI to derive tools from. No MCPServer pointer is emitted from this file.
+status: none
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+tools: []
+tool_count: 0
+probes:
+- url: https://api.giveffect.com/mcp
+  status: 404
+  note: JSON 404 envelope from the API host
+- url: https://api.giveffect.com/.well-known/oauth-authorization-server
+  status: 404
+- url: https://api.giveffect.com/.well-known/oauth-protected-resource
+  status: 404
+- url: https://www.giveffect.com/llms.txt
+  status: 404
+  note: no llms.txt to fall back to for a published tool list
+derivation_blocked:
+  reason: no-openapi
+  note: >-
+    A candidate tool list is normally derived from OpenAPI operations. Giveffect
+    publishes no OpenAPI, Swagger, GraphQL or AsyncAPI contract on any host
+    (see x-coverage in apis.yml), so there is nothing to derive from and nothing
+    was invented.
+checked: '2026-08-13'

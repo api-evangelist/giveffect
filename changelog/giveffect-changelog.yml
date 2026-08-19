@@ -1,0 +1,122 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.giveffect.com/nonprofit-resource-center/tag/product-updates/
+name: Giveffect product updates
+description: >-
+  Giveffect does not publish an API changelog, release notes, or a version
+  history for the enterprise "open API". It does publish a dated product-updates
+  stream as a tag on its WordPress-backed resource center. Entries are
+  product/feature announcements written for nonprofit administrators, not for
+  API consumers — there are no version numbers, no breaking-change notices and
+  no deprecation entries. Captured here because it is the only dated,
+  provider-published record of what changes in the platform.
+scope: product
+scheme: none
+versioned: false
+current_version: null
+url: https://www.giveffect.com/nonprofit-resource-center/tag/product-updates/
+feed: https://www.giveffect.com/nonprofit-resource-center/feed/
+machine_readable:
+  available: true
+  note: >-
+    The resource center runs on WordPress and exposes the stock WordPress REST
+    API, so the product-updates stream can be read as JSON at
+    /nonprofit-resource-center/wp-json/wp/v2/posts?tags=496 (tag id 496 =
+    "product-updates", 13 posts). This is WordPress core's content API, not a
+    Giveffect product API.
+  url: https://www.giveffect.com/nonprofit-resource-center/wp-json/wp/v2/posts?tags=496
+entry_count: 12
+entries:
+- date: '2026-05-07'
+  version: null
+  breaking: false
+  title: >-
+    Announcing Giveffect's Dialpad Integration: Bring Calling Directly Into Your
+    CRM
+  type: integration
+  url: https://www.giveffect.com/nonprofit-resource-center/dialpad-integration-nonprofit-crm-giveffect/
+- date: '2025-12-18'
+  version: null
+  breaking: false
+  title: Top 10 Giveffect Product Updates That Transformed Nonprofit Operations in 2025
+  type: roundup
+  url: https://www.giveffect.com/nonprofit-resource-center/giveffect-2025-new-features/
+  highlights:
+  - Tap-2-Pay for Android devices
+  - Two-factor authentication
+  - Embedded pop-up form
+  - Partial refunds
+  - Payment itemization
+  - Manage tickets link
+  - Simultaneous entry of tickets and offline donation records
+  - Supporter wishlist for auction items
+  - Batch entry of volunteer assignments
+  - Terminate journeys in workflow automation
+- date: '2025-02-10'
+  version: null
+  breaking: false
+  title: 10 Game-Changing Tech Features of 2024 to Boost Nonprofit Efficiency
+  type: roundup
+  url: https://www.giveffect.com/nonprofit-resource-center/new-game-changing-tech-features/
+- date: '2023-06-20'
+  version: null
+  breaking: false
+  title: >-
+    Giveffect Launches AI Writer to Help Nonprofits Accelerate Content Writing
+    and Maximize Impact
+  type: feature
+  url: https://www.giveffect.com/nonprofit-resource-center/giveffect-launches-ai-writer-to-help-nonprofits-accelerate-content-writing-and-maximize-impact/
+- date: '2022-06-09'
+  version: null
+  breaking: false
+  title: New Sleek Nonprofit Campaign Page Design Introduced
+  type: feature
+  url: https://www.giveffect.com/nonprofit-resource-center/new-sleek-nonprofit-campaign-page-design-introduced/
+- date: '2022-01-04'
+  version: null
+  breaking: false
+  title: Giveffect Integration with HelloSign
+  type: integration
+  url: https://www.giveffect.com/nonprofit-resource-center/giveffect-integration-with-hellosign/
+- date: '2022-01-04'
+  version: null
+  breaking: false
+  title: Giveffect Integration with Zoom
+  type: integration
+  url: https://www.giveffect.com/nonprofit-resource-center/giveffect-integration-with-zoom/
+- date: '2021-11-12'
+  version: null
+  breaking: false
+  title: 'Giveffect CRM Feature: Email Sync'
+  type: feature
+- date: '2021-10-29'
+  version: null
+  breaking: false
+  title: 'Giveffect Features: Workflow Automation System'
+  type: feature
+- date: '2021-09-15'
+  version: null
+  breaking: false
+  title: New Giveffect Dashboard App Puts Analytics in Your Hands
+  type: feature
+- date: '2021-09-07'
+  version: null
+  breaking: false
+  title: 'Giveffect Mission Control: Your CRM, Your Way'
+  type: feature
+- date: '2021-08-10'
+  version: null
+  breaking: false
+  title: 'Giveffect Integration: QuickBooks Online'
+  type: integration
+gaps:
+- No API-specific changelog or release notes.
+- No version scheme, no semantic versions, no dated API versions.
+- No breaking-change or deprecation announcements.
+x-evidence:
+- url: https://www.giveffect.com/nonprofit-resource-center/tag/product-updates/
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/nonprofit-resource-center/wp-json/wp/v2/posts?tags=496
+  http_status: 200
+  fetched: '2026-08-13'

@@ -1,0 +1,53 @@
+generated: '2026-08-13'
+method: searched
+source: public package registries + giveffect.com
+name: Giveffect client libraries
+description: >-
+  Giveffect publishes no first-party client libraries or SDKs in any public
+  package registry, and its site links to none. This is consistent with the
+  distribution model: API access is a feature of the enterprise Ultimate+ tier
+  and is provisioned per customer, so there is no public developer audience for
+  a package to serve. No SDKs pointer is emitted from this file — it records a
+  searched absence.
+package_count: 0
+official_count: 0
+packages: []
+registries_searched:
+- registry: npm
+  query: giveffect
+  url: https://registry.npmjs.org/-/v1/search?text=giveffect
+  results: 0
+- registry: pypi
+  query: giveffect
+  url: https://pypi.org/pypi/giveffect/json
+  results: 0
+  http_status: 404
+- registry: rubygems
+  query: giveffect
+  url: https://rubygems.org/api/v1/search.json?query=giveffect
+  results: 0
+- registry: packagist
+  query: giveffect
+  url: https://packagist.org/search.json?q=giveffect
+  results: 0
+  note: one unrelated package (siteffects/site-controller) matched on substring
+- registry: crates.io
+  query: giveffect
+  url: https://crates.io/api/v1/crates?q=giveffect
+  results: 0
+source_repositories:
+- url: https://github.com/Giveffect
+  http_status: 200
+  type: user
+  public_repos: 0
+  created: '2017-03-29'
+  note: >-
+    A GitHub USER account (not an organization) registered to Giveffect — bio
+    "The #1 All-In-One Nonprofit Software", blog www.giveffect.com, San
+    Francisco. It has zero public repositories and has not been updated since
+    2017-03-29. No GitHubOrganization pointer is emitted: the account exists but
+    publishes nothing.
+- url: https://api.github.com/orgs/giveffect
+  http_status: 404
+  note: no GitHub organization by this name
+checked: '2026-08-13'

@@ -1,0 +1,41 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.giveffect.com/pricing
+name: Giveffect API rate limits
+description: >-
+  Giveffect publishes no rate limits for its enterprise "open API". There is no
+  public developer portal or API reference to read limits from — the only public
+  statement about the API is a pricing-card feature line ("Open API and custom
+  integration", Ultimate+ tier only). Live unauthenticated responses from
+  api.giveffect.com were inspected directly and carry no rate-limit headers of
+  any family.
+limit_count: 0
+limits: []
+headers:
+  observed: []
+  note: >-
+    Response headers observed live on GET https://api.giveffect.com/ (200) and
+    GET https://api.giveffect.com/v1/donors (404) on 2026-08-13 were:
+    Server, Date, Cache-Control, X-XSS-Protection, X-Request-Id, X-UA-Compatible,
+    ETag, X-Frame-Options, X-Runtime, X-Content-Type-Options, X-Powered-By,
+    Status, Content-Type. No X-RateLimit-*, no RateLimit-*, no Retry-After.
+exhaustion_status: null
+retry_after: false
+quota_source: null
+notes:
+- >-
+  Plan tiers are sized by database records and seats (10k-30k / 30k-100k /
+  100k+), not by API calls; no API metering is published.
+- >-
+  Limits may well exist behind authentication — they are simply not published,
+  and an unauthenticated probe cannot observe them.
+x-evidence:
+- url: https://api.giveffect.com/
+  http_status: 200
+  fetched: '2026-08-13'
+- url: https://api.giveffect.com/v1/donors
+  http_status: 404
+  fetched: '2026-08-13'
+- url: https://www.giveffect.com/pricing
+  http_status: 200
+  fetched: '2026-08-13'
