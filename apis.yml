@@ -46,6 +46,15 @@ created: '2026-07-17'
 modified: '2026-08-13'
 tags:
 - Company
+- Non-Profit
+- Fundraising
+- CRM
+- Donations
+- Volunteer Management
+- Marketing Automation
+- Software-as-a-Service
+tags_raw:
+- Company
 - Nonprofit
 - Fundraising
 - CRM
@@ -73,6 +82,10 @@ apis:
   humanURL: https://www.giveffect.com/pricing
   baseURL: https://api.giveffect.com
   tags:
+  - Non-Profit
+  - Fundraising
+  - CRM
+  tags_raw:
   - Nonprofit
   - Fundraising
   - CRM
