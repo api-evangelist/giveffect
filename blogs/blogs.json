@@ -1,0 +1,14 @@
+{
+  "repo": "giveffect",
+  "feeds": [
+    {
+      "source": "https://www.giveffect.com/nonprofit-resource-center",
+      "feed_url": "https://www.giveffect.com/nonprofit-resource-center/feed/",
+      "title": "",
+      "saved": 1,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 1,
+  "fetched": "2026-08-22T20:20:02Z"
+}
