@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/giveffect/integrations
+- https://n8n.io/integrations/giveffect/
+- https://composio.dev/toolkits/giveffect
+- https://monid.ai/tools/giveffect
+checked:
+- https://composio.dev/toolkits/giveffect
+- https://monid.ai/tools/giveffect
+- https://n8n.io/integrations/giveffect/
+- https://zapier.com/apps/giveffect/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
